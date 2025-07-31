@@ -4,29 +4,12 @@ A simple web-based quiz application built with **HTML**, **CSS**, and **Vanilla 
 
 ---
 
-## 📂 Project Structure
-
-```
-Quiz‑App/
-├── index.html        # Home page with CSV upload form
-├── script.js         # JS logic for uploading and parsing CSV
-├── style.css         # Styles for index.html
-├── Questions.html    # Displays questions and options
-├── script1.js        # Handles quiz rendering and navigation
-├── quizstyle.css     # Stylesheet for Questions.html
-├── result.html       # Shows quiz results (correct/wrong counts)
-├── images/           # UI assets (e.g. buttons, background)
-└── README.md         # Documentation (this file)
-```
-
----
-
 ## 🚀 Features
 
 - Support for any number of questions and options in CSV format.
 - CSV must follow strict formatting:  
   `question,option1,option2,...,option‑n,correct‑option`
-- Displays multiple‑choice questions with radio buttons.
+- Displays multiple‑choice questions with option.
 - Tracks user selections and displays a result summary.
 
 ---
@@ -50,15 +33,6 @@ Quiz‑App/
    - Navigate through the quiz.
    - View result summary on the `result.html` page.
 
----
-
-## 🧩 How It Works
-
-- **index.html**: Uploads CSV and passes data to next pages.
-- **Questions.html + script1.js**: Parses the CSV and dynamically renders questions/options.
-- **result.html**: Compares answers and displays count of correct vs. wrong responses.
-
----
 
 ## 🔧 Customization & Development
 
