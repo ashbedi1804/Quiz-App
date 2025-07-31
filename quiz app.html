@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css"> <!-- ✅ correct path -->
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz App</h1>
+    <div id="quiz">
+      <h2 id="question">Question will be here</h2>
+      <div id="options">
+        <button>Option 1</button>
+        <button>Option 2</button>
+        <button>Option 3</button>
+        <button>Option 4</button>
+      </div>
+      <button id="nextBtn">Next</button>
+    </div>
+    <div id="result" class="hide">
+      <h2 id="scoreText">Result will be here</h2>
+      <button onclick="location.reload()">Restart</button>
+    </div>
+  </div>
+  <script src="script.js"></script> <!-- ✅ correct path -->
+</body>
+</html>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.quiz-container {
+  background: violet;;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(71, 112, 181, 0.2);
+  text-align: center;
+}
+
+#options button {
+  margin: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+#nextBtn {
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+</style>
+<script>
+    const quizData = [
+  {
+    question: "Which tag is used for JavaScript?",
+    options: ["<script>", "<js>", "<javascript>", "<code>"],
+    answer: "<script>"
+  },
+  {
+    question: "What does CSS stand for?",
+    options: ["Color Style Sheet", "Cascading Style Sheets", "Creative Style System", "Custom Sheet Style"],
+    answer: "Cascading Style Sheets"
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const resultEl = document.getElementById("result");
+const scoreText = document.getElementById("scoreText");
+
+function loadQuestion() {
+  const current = quizData[currentQuestion];
+  questionEl.textContent = current.question;
+  optionsEl.innerHTML = "";
+
+  current.options.forEach(option => {
+    const btn = document.createElement("button");
+    btn.textContent = option;
+    btn.onclick = () => {
+      if (option === current.answer) score++;
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    };
+    optionsEl.appendChild(btn);
+  });
+}
+
+function showResult() {
+  document.getElementById("quiz").classList.add("hide");
+  resultEl.classList.remove("hide");
+  scoreText.textContent = `You scored ${score} out of ${quizData.length}`;
+}
+
+loadQuestion();
+
+</script>
+</html>
